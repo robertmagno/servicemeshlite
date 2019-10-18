@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: details-ingress
+  annotations:
+   kubernetes.io/ingress.class: "vpx"
+#   ingress.citrix.com/insecure-termination: "allow"
+   ingress.citrix.com/insecure-port: "9080"
+   ingress.citrix.com/frontend-ip: "192.168.10.60"
+#   ingress.citrix.com/insecure-service-type: "any"
+spec:
+  rules:
+  - host: details
+    http:
+      paths:
+      - path:
+        backend:
+          serviceName: details-service
+          servicePort: 9080
+

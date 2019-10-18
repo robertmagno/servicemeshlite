@@ -1,0 +1,25 @@
+---
+kind: "Service"
+apiVersion: "v1"
+metadata:
+  name: "details"
+spec:
+  ports:
+    -
+      name: "details"
+      protocol: "TCP"
+      port: 9080
+---
+kind: "Endpoints"
+apiVersion: "v1"
+metadata:
+  name: "details"
+subsets:
+  -
+    addresses:
+      -
+        ip: "192.168.10.60" # Ingress IP in MPX
+    ports:
+      -
+        port: 9080
+        name: "details"
