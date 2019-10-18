@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: reviews-ingress
+  annotations:
+   kubernetes.io/ingress.class: "cpx"
+#   ingress.citrix.com/insecure-termination: "allow"
+   ingress.citrix.com/insecure-port: "9080"
+#   ingress.citrix.com/insecure-service-type: "any"
+spec:
+  rules:
+  - host: reviews
+    http:
+      paths:
+      - path:
+        backend:
+          serviceName: reviews-service
+          servicePort: 9080
+
