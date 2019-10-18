@@ -1,0 +1,73 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cpx
+  labels: 
+    app: cpx
+    service: cpx
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: cpx
+      labels:
+        app: cpx
+        service: cpx
+      annotations:
+        NETSCALER_AS_APP: "True"
+    spec:
+      serviceAccountName: cpx
+      containers:
+        - name: reviews-cpx
+          image: "quay.io/citrix/citrix-k8s-cpx-ingress:13.0-36.28"
+          securityContext: 
+             privileged: true
+          env:
+          - name: "EULA"
+            value: "yes"
+          - name: "KUBERNETES_TASK_ID"
+            value: ""
+          - name: "MGMT_HTTP_PORT"
+            value: "9081"
+          ports:
+          - name: http
+            containerPort: 9080
+          - name: https
+            containerPort: 443
+          - name: nitro-http
+            containerPort: 9081
+          - name: nitro-https
+            containerPort: 9443
+# readiness probe?
+          imagePullPolicy: Always
+        # Add cic as a sidecar
+        - name: cic
+          image: "quay.io/citrix/citrix-k8s-ingress-controller:1.2.0"
+          env:
+          - name: "EULA"
+            value: "yes"
+          - name: "NS_IP"
+            value: "127.0.0.1"
+          - name: "NS_PROTOCOL"
+            value: "HTTP"
+          - name: "NS_PORT"
+            value: "80"
+          - name: "NS_DEPLOYMENT_MODE"
+            value: "SIDECAR"
+          - name: "NS_ENABLE_MONITORING"
+            value: "YES"
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.name
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          args:
+            - --ingress-classes
+              cpx
+          imagePullPolicy: Always
+---

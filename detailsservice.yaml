@@ -1,0 +1,18 @@
+##################################################################################################
+# Details service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: details-service
+  labels:
+    app: details-service
+    service: details-service
+spec:
+  clusterIP: None
+  ports:
+  - port: 9080
+    name: http
+  selector:
+    app: details
+
