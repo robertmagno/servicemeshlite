@@ -189,14 +189,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: productpage
+  name: productpage-service
   labels:
-    app: productpage
-    service: productpage
+    app: productpage-service
+    service: productpage-service
 spec:
   type: NodePort
   ports:
-  - port: 9080
+  - port: 80
     targetPort: 9080
   selector:
     app: productpage
