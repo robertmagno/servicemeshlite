@@ -29,7 +29,7 @@ spec:
   selector:
     app: details
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: details-v1
@@ -37,6 +37,9 @@ metadata:
     app: details
     version: v1
 spec:
+  selectors: 
+    matchLabels: 
+       app: details
   replicas: 1
   template:
     metadata:
@@ -70,7 +73,7 @@ spec:
   selector:
     app: ratings
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ratings-v1
@@ -78,6 +81,9 @@ metadata:
     app: ratings
     version: v1
 spec:
+  selectors: 
+    matchLabels: 
+       app: ratings
   replicas: 1
   template:
     metadata:
@@ -111,7 +117,7 @@ spec:
   selector:
     app: reviews
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: reviews-v1
@@ -119,6 +125,9 @@ metadata:
     app: reviews
     version: v1
 spec:
+  selectors: 
+    matchLabels: 
+       app: reviews
   replicas: 1
   template:
     metadata:
@@ -135,7 +144,7 @@ spec:
         ports:
         - containerPort: 9080
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: reviews-v2
@@ -143,6 +152,9 @@ metadata:
     app: reviews
     version: v2
 spec:
+  selectors: 
+    matchLabels: 
+       app: reviews
   replicas: 1
   template:
     metadata:
@@ -159,7 +171,7 @@ spec:
         ports:
         - containerPort: 9080
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: reviews-v3
@@ -167,6 +179,9 @@ metadata:
     app: reviews
     version: v3
 spec:
+  selectors: 
+    matchLabels: 
+       app: reviews
   replicas: 1
   template:
     metadata:
@@ -198,7 +213,7 @@ spec:
   selector:
     app: productpage
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: productpage-v1
@@ -206,6 +221,9 @@ metadata:
     app: productpage
     version: v1
 spec:
+  selectors: 
+    matchLabels: 
+       app: productpage
   replicas: 1
   template:
     metadata:
