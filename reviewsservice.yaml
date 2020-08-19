@@ -6,7 +6,7 @@ kind: Service
 metadata:
   name: reviews-service
   labels:
-    app: reviews-service
+    app: reviews
     service: reviews-service
 spec:
   clusterIP: None
@@ -15,4 +15,3 @@ spec:
     name: http
   selector:
     app: reviews
-
