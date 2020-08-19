@@ -37,7 +37,7 @@ metadata:
     app: details
     version: v1
 spec:
-  selectors: 
+  selector: 
     matchLabels: 
        app: details
   replicas: 1
@@ -81,7 +81,7 @@ metadata:
     app: ratings
     version: v1
 spec:
-  selectors: 
+  selector: 
     matchLabels: 
        app: ratings
   replicas: 1
@@ -125,7 +125,7 @@ metadata:
     app: reviews
     version: v1
 spec:
-  selectors: 
+  selector: 
     matchLabels: 
        app: reviews
   replicas: 1
@@ -152,7 +152,7 @@ metadata:
     app: reviews
     version: v2
 spec:
-  selectors: 
+  selector: 
     matchLabels: 
        app: reviews
   replicas: 1
@@ -179,7 +179,7 @@ metadata:
     app: reviews
     version: v3
 spec:
-  selectors: 
+  selector: 
     matchLabels: 
        app: reviews
   replicas: 1
@@ -221,7 +221,7 @@ metadata:
     app: productpage
     version: v1
 spec:
-  selectors: 
+  selector: 
     matchLabels: 
        app: productpage
   replicas: 1
