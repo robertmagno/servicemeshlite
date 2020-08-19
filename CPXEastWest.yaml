@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cpx
@@ -6,6 +6,9 @@ metadata:
     app: cpx
     service: cpx
 spec:
+  selector: 
+    matchLabel: 
+      app: cpx
   replicas: 1
   template:
     metadata:
