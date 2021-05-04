@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: details
+  name: ratings
 spec:
   ports:
   - port: 9080
@@ -20,25 +20,25 @@ metadata:
    ingress.citrix.com/insecure-port: "9080"
 spec:
   rules:
-  - host: details
+  - host: ratings
     http:
       paths:
       - path:
         backend:
-          serviceName: details-service
+          serviceName: ratings-service
           servicePort: 9080
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: details-service
+  name: ratings-service
   labels:
-    app: details
-    service: details-service
+    app: ratings
+    service: ratings-service
 spec:
   clusterIP: None
   ports:
   - port: 9080
     name: http
   selector:
-    app: details
+    app: ratings
